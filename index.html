@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://www.kosiagro.com">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Kosi Agro Private Limited: Coming Soon">
-<meta name="twitter:description" content="A makhana house rooted in Seemanchal, Bihar.">
+<meta name="twitter:description" content="A makhana house rooted in Seemanchal, Bihar. Coming soon.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -365,31 +365,30 @@
     margin-bottom:14px; display:block;
   }
 
-  .product-image{
-    margin-top:90px; border-radius:20px; overflow:hidden; position:relative;
+  .feature-card{
+    position:relative; border-radius:20px; overflow:hidden;
     aspect-ratio:21/9;
     box-shadow:0 25px 45px -12px rgba(0,0,0,.5), 0 10px 20px -8px rgba(0,0,0,.35);
   }
-  .product-image img{ width:100%; height:100%; object-fit:cover; object-position:center 78%; }
-  .product-image .bg-overlay{ background:linear-gradient(90deg, rgba(13,43,24,.18) 0%, rgba(13,43,24,0) 30%); }
-
-  .water-interlude{
-    position:relative; height:320px; overflow:hidden; display:flex; align-items:center; justify-content:center;
-  }
-  .water-interlude .bg-overlay{ background:rgba(13,43,24,.55); }
-  .water-interlude-text{
-    position:relative; z-index:3; color:var(--white); font-family:var(--font-head);
+  .feature-card img{ width:100%; height:100%; object-fit:cover; }
+  .feature-card-text{
+    position:absolute; inset:0; z-index:3; display:flex; align-items:center; justify-content:center;
+    color:var(--white); font-family:var(--font-head);
     font-style:italic; font-weight:500; font-size:clamp(20px,2.6vw,30px); text-align:center; padding:0 20px;
   }
-  .interlude-fade{ position:absolute; left:0; right:0; height:70px; z-index:2; pointer-events:none; }
-  .interlude-fade-top{ top:0; background:linear-gradient(180deg, rgba(13,43,24,.85) 0%, rgba(13,43,24,0) 100%); }
-  .interlude-fade-bottom{ bottom:0; background:linear-gradient(0deg, rgba(13,43,24,.9) 0%, rgba(13,43,24,0) 100%); }
+
+  .product-image{ margin-top:90px; }
+  .product-image img{ object-position:center 78%; }
+  .product-image .bg-overlay{ background:linear-gradient(180deg, rgba(13,43,24,.1) 0%, rgba(13,43,24,.45) 100%); }
+
+  .water-interlude{ background:var(--green-dark); padding:70px 0; }
+  .water-interlude .bg-overlay{ background:rgba(13,43,24,.35); }
 
   /* ---------- Facts / counters ---------- */
   #bihar{
     position:relative; padding:150px 0; color:var(--white); overflow:hidden;
   }
-  #bihar .bg-overlay{ background:linear-gradient(180deg, rgba(13,43,24,.93) 0%, rgba(13,43,24,.88) 60%, var(--cream) 100%); }
+  #bihar .bg-overlay{ background:linear-gradient(180deg, rgba(13,43,24,.93) 0%, rgba(13,43,24,.9) 82%, var(--cream) 100%); }
   .facts-grid{
     position:relative; z-index:2;
     display:grid; grid-template-columns:repeat(4,1fr); gap:40px; text-align:center;
@@ -634,8 +633,8 @@
     <div class="story-grid">
       <div class="story-col-left story-text">
         <p class="reveal-up">Few people outside Bihar have even heard of Seemanchal. But this quiet stretch of ponds and jheels, fed by the Kosi and the Mahananda rivers, sits at the heart of the world's largest makhana belt, where the spiny lotus has grown, wild and cultivated, for generations. Bihar alone grows more than nine in every ten makhana seeds harvested on Earth.</p>
-        <p class="reveal-up">Kosi Agro started with something simple: we already knew this world. The ponds, the harvest calendar, the families who wade in each August to gather the seed by hand. This is where we grew up. Now we're building a way to bring that knowledge straight to buyers who care as much about origin as they do about quality.</p>
-        <p class="reveal-up">We're early. Small, deliberate, and unhurried, because a business built on trust is worth building slowly. What we lack in size, we intend to make up for in honesty, and in knowing this crop better than anyone else in the trade.</p>
+        <p class="reveal-up">Kosi Agro started with something simple: we already knew this world. The ponds, the harvest calendar, the families who wade in each August to gather the seed by hand: this is where we grew up. Now we're building a way to bring that knowledge straight to buyers who care as much about origin as they do about quality.</p>
+        <p class="reveal-up">We're early, small, deliberate, and unhurried, because a business built on trust is worth building slowly. What we lack in size, we intend to make up for in honesty, and in knowing this crop better than anyone else in the trade.</p>
       </div>
       <div class="story-col-right reveal-scale">
         <div class="story-image-wrap" data-cursor-img>
@@ -673,26 +672,27 @@
       <div class="product-col glass-card reveal-scale">
         <span class="product-col-number">03</span>
         <h3>Seemanchal. Nowhere Else.</h3>
-        <p>More than 90% of the world's makhana grows in Bihar, and Seemanchal is its heartland. The water, the climate, the generations of know-how: none of it travels. Source from Kosi Agro, and you'll know exactly which ponds, and which people, it came from.</p>
+        <p>More than 90% of the world's makhana grows in Bihar, and Seemanchal is its heartland. The water, the climate, the generations of know-how: none of it travels. Source from Kosi Agro, and you'll know exactly which ponds and which people it came from.</p>
       </div>
     </div>
 
-    <div class="product-image reveal-scale" data-cursor-img>
-      <img src="https://images.unsplash.com/photo-1745680379979-25004895df30?w=1600&q=80" alt="A lotus seed pod, its seeds visible, the raw form makhana comes from" width="1600" height="686" loading="lazy">
+    <div class="feature-card product-image reveal-scale" data-cursor-img>
+      <img src="https://images.unsplash.com/photo-1745680379979-25004895df30?w=1600&q=80" alt="A lotus seed pod with its seeds visible, the raw form makhana comes from" width="1600" height="686" loading="lazy">
       <div class="bg-overlay"></div>
+      <p class="feature-card-text">This is where makhana begins.</p>
     </div>
   </div>
 </section>
 
 <!-- ============ VISUAL INTERLUDE ============ -->
 <div class="water-interlude">
-  <div class="interlude-fade interlude-fade-top"></div>
-  <div class="bg-media">
-    <img src="https://images.unsplash.com/photo-1766670984882-00b5b34c4035?w=1920&q=80" alt="A water droplet resting on a lotus leaf" width="1920" height="500" loading="lazy">
+  <div class="container">
+    <div class="feature-card reveal-scale" data-cursor-img>
+      <img src="https://images.unsplash.com/photo-1766670984882-00b5b34c4035?w=1920&q=80" alt="A water droplet resting on a lotus leaf" width="1920" height="500" loading="lazy">
+      <div class="bg-overlay"></div>
+      <p class="feature-card-text">Every seed begins in water.</p>
+    </div>
   </div>
-  <div class="bg-overlay"></div>
-  <p class="water-interlude-text reveal-up">Every seed begins in water.</p>
-  <div class="interlude-fade interlude-fade-bottom"></div>
 </div>
 
 <!-- ============ BIHAR & MAKHANA FACTS ============ -->
@@ -729,7 +729,7 @@
     <span class="section-tag reveal-up">GET IN TOUCH</span>
     <div class="contact-head">
       <h2 class="reveal-left">Curious what we're building?</h2>
-      <p class="reveal-up">We haven't opened for business yet. But if you're a buyer, a distributor, or simply curious about makhana grown the way it always has been, we'd like to hear from you.</p>
+      <p class="reveal-up">We haven't opened for business yet. But if you're a buyer, a distributor, or simply curious about makhana grown the way it has always been, we'd like to hear from you.</p>
     </div>
 
     <div class="contact-grid">
