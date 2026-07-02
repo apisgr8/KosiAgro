@@ -315,20 +315,19 @@
   .glass-card{
     position:relative; overflow:hidden; padding:38px 32px; border-radius:22px;
     background:rgba(255,255,255,.08);
-    backdrop-filter:blur(20px) saturate(180%);
-    -webkit-backdrop-filter:blur(20px) saturate(180%);
+    backdrop-filter:blur(14px) saturate(160%);
+    -webkit-backdrop-filter:blur(14px) saturate(160%);
     border:1px solid rgba(255,255,255,.22);
     box-shadow:0 8px 32px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.25);
-    transition:transform .35s ease, background .35s ease;
+    transition:background .35s ease, border-color .35s ease;
     transform:translateZ(0); -webkit-transform:translateZ(0);
-    will-change:transform;
   }
   .glass-card::before{
     content:""; position:absolute; inset:0 0 55% 0;
     background:linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,0));
     pointer-events:none;
   }
-  .glass-card:hover{ transform:translateY(-6px) translateZ(0); background:rgba(255,255,255,.12); }
+  .glass-card:hover{ background:rgba(255,255,255,.13); border-color:rgba(255,255,255,.32); }
   .product-col h3{
     font-size:22px; color:var(--gold-light); margin-bottom:16px; font-weight:600;
   }
@@ -759,12 +758,18 @@
   reveal(".reveal-up", { y:0, opacity:1, duration:.8, ease:"power2.out" });
   reveal(".reveal-scale", { scale:1, opacity:1, duration:.8, ease:"power2.out" });
 
-  /* Recalculate trigger positions as lazy-loaded images finish (they don't block window "load") */
+  /* Recalculate trigger positions as lazy-loaded images finish (they don't block window "load").
+     Debounced so several images finishing close together only cost one refresh, not N. */
+  var refreshTimer = null;
+  function scheduleRefresh(){
+    clearTimeout(refreshTimer);
+    refreshTimer = setTimeout(function(){ ScrollTrigger.refresh(); }, 200);
+  }
   document.querySelectorAll("img").forEach(function(img){
     if(img.complete) return;
-    img.addEventListener("load", function(){ ScrollTrigger.refresh(); }, { once:true });
+    img.addEventListener("load", scheduleRefresh, { once:true });
   });
-  window.addEventListener("load", function(){ ScrollTrigger.refresh(); });
+  window.addEventListener("load", scheduleRefresh);
 
   gsap.utils.toArray(".gold-line:not(#hero-line)").forEach(function(line){
     gsap.to(line, {
