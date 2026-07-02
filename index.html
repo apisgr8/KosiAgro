@@ -58,39 +58,6 @@
 
   ::selection{ background:var(--gold); color:var(--white); }
 
-  /* ---------- Custom cursor (desktop only) ---------- */
-  .cursor-enabled, .cursor-enabled a, .cursor-enabled button{ cursor:none; }
-  #cursor-dot, #cursor-circle{
-    position:fixed; top:0; left:0; pointer-events:none; z-index:9999;
-    border-radius:50%;
-    transform:translate(-50%,-50%);
-    will-change:transform;
-  }
-  #cursor-dot{
-    width:8px; height:8px; background:var(--green);
-    transition:opacity .2s ease;
-  }
-  #cursor-circle{
-    width:40px; height:40px; border:1.5px solid var(--green);
-    display:flex; align-items:center; justify-content:center;
-    transition:width .3s ease, height .3s ease, background .3s ease, border-color .3s ease;
-    font-family:var(--font-label); font-size:10px; letter-spacing:1px; text-transform:uppercase;
-    color:var(--white); opacity:.85;
-  }
-  #cursor-circle.expand{
-    width:96px; height:96px; background:var(--green); border-color:var(--green);
-  }
-  #cursor-circle.crosshair{
-    width:64px; height:64px; border-color:var(--gold); background:rgba(13,43,24,.35);
-  }
-  #cursor-circle span{ opacity:0; transition:opacity .2s ease; }
-  #cursor-circle.expand span{ opacity:1; }
-
-  @media (max-width:1024px), (pointer:coarse){
-    #cursor-dot, #cursor-circle{ display:none !important; }
-    .cursor-enabled, .cursor-enabled a, .cursor-enabled button{ cursor:auto; }
-  }
-
   /* ---------- Loader ---------- */
   #loader{
     position:fixed; inset:0; z-index:10000;
@@ -501,10 +468,6 @@
 </head>
 <body>
 
-<!-- Custom cursor -->
-<div id="cursor-dot"></div>
-<div id="cursor-circle"><span>Connect</span></div>
-
 <!-- ============ LOADER ============ -->
 <div id="loader">
   <div class="loader-panel loader-panel-left"></div>
@@ -523,7 +486,7 @@
 <!-- ============ NAV ============ -->
 <nav id="navbar">
   <div class="container">
-    <a href="#hero" class="nav-logo" data-cursor="Home">
+    <a href="#hero" class="nav-logo">
       <span class="logo-chip nav-logo-chip"><img src="kosi-agro-icon.png" alt="Kosi Agro" width="231" height="173"></span>
       <span class="nav-logo-text">KOSI AGRO</span>
     </a>
@@ -595,7 +558,7 @@
         <p class="reveal-up">We're early, small, deliberate, and unhurried, because a business built on trust is worth building slowly. What we lack in size, we intend to make up for in honesty, and in knowing this crop better than anyone else in the trade.</p>
       </div>
       <div class="story-col-right reveal-scale">
-        <div class="story-image-wrap" data-cursor-img>
+        <div class="story-image-wrap">
           <div class="story-frame"></div>
           <img src="https://images.unsplash.com/photo-1601300389262-a1405d12c412?w=1200&q=80" alt="A water lily in bloom on a Bihar pond" width="1200" height="1500" loading="lazy">
         </div>
@@ -634,7 +597,7 @@
       </div>
     </div>
 
-    <div class="feature-card product-image reveal-scale" data-cursor-img>
+    <div class="feature-card product-image reveal-scale">
       <img src="https://images.unsplash.com/photo-1745680379979-25004895df30?w=1600&q=80" alt="A lotus seed pod with its seeds visible, the raw form makhana comes from" width="1600" height="686" loading="lazy">
       <div class="bg-overlay"></div>
       <p class="feature-card-text">This is where makhana begins.</p>
@@ -645,7 +608,7 @@
 <!-- ============ VISUAL INTERLUDE ============ -->
 <div class="water-interlude">
   <div class="container">
-    <div class="feature-card reveal-scale" data-cursor-img>
+    <div class="feature-card reveal-scale">
       <img src="https://images.unsplash.com/photo-1766670984882-00b5b34c4035?w=1920&q=80" alt="A water droplet resting on a lotus leaf" width="1920" height="500" loading="lazy">
       <div class="bg-overlay"></div>
       <p class="feature-card-text">Every seed begins in water.</p>
@@ -955,44 +918,6 @@
       setTimeout(function(){ ripple.remove(); }, 650);
     });
   });
-
-  /* ---------------- CUSTOM CURSOR (desktop only) ---------------- */
-  var isDesktop = window.matchMedia("(min-width:1025px) and (pointer:fine)").matches;
-  if(isDesktop){
-    document.body.classList.add("cursor-enabled");
-    var dot = document.getElementById("cursor-dot");
-    var circle = document.getElementById("cursor-circle");
-    var mouseX = 0, mouseY = 0, circleX = 0, circleY = 0;
-
-    window.addEventListener("mousemove", function(e){
-      mouseX = e.clientX; mouseY = e.clientY;
-      dot.style.transform = "translate(" + mouseX + "px," + mouseY + "px) translate(-50%,-50%)";
-    });
-
-    function lerpLoop(){
-      circleX += (mouseX - circleX) * 0.16;
-      circleY += (mouseY - circleY) * 0.16;
-      circle.style.transform = "translate(" + circleX + "px," + circleY + "px) translate(-50%,-50%)";
-      requestAnimationFrame(lerpLoop);
-    }
-    lerpLoop();
-
-    document.querySelectorAll("a, button").forEach(function(el){
-      el.addEventListener("mouseenter", function(){
-        var label = el.getAttribute("data-cursor") || "Learn More";
-        circle.querySelector("span").textContent = label;
-        circle.classList.add("expand");
-      });
-      el.addEventListener("mouseleave", function(){
-        circle.classList.remove("expand");
-      });
-    });
-
-    document.querySelectorAll("[data-cursor-img]").forEach(function(el){
-      el.addEventListener("mouseenter", function(){ circle.classList.add("crosshair"); });
-      el.addEventListener("mouseleave", function(){ circle.classList.remove("crosshair"); });
-    });
-  }
 
   /* Safety: if GSAP/fonts fail to load, ensure loader doesn't stay stuck forever */
   setTimeout(function(){
