@@ -39,7 +39,9 @@
   }
 
   *,*::before,*::after{ box-sizing:border-box; }
-  html{ scroll-behavior:smooth; }
+  /* Note: no CSS scroll-behavior:smooth here on purpose — it fights with
+     GSAP ScrollTrigger's scrub animations and causes stutter while scrolling.
+     Anchor-link smoothing is handled in JS instead. */
   body{
     margin:0;
     font-family:var(--font-body);
@@ -78,6 +80,7 @@
     backdrop-filter:blur(10px) saturate(160%);
     -webkit-backdrop-filter:blur(10px) saturate(160%);
     border-radius:14px;
+    transform:translateZ(0); -webkit-transform:translateZ(0);
   }
   .loader-logo-chip{ position:relative; overflow:hidden; padding:22px 26px; border-radius:18px; }
   .loader-logo-mask{ width:0; overflow:hidden; }
@@ -105,6 +108,7 @@
   #navbar .container{
     display:flex; align-items:center; justify-content:space-between;
   }
+  #navbar{ transform:translateZ(0); -webkit-transform:translateZ(0); }
   #navbar.scrolled{
     background:rgba(251,248,242,.78);
     backdrop-filter:blur(16px) saturate(160%);
@@ -299,7 +303,7 @@
 
   /* ---------- Product ---------- */
   #product{ position:relative; overflow:hidden; background:var(--green-dark); color:var(--white); padding:130px 0; }
-  #product .bg-media img{ filter:blur(2px) saturate(1.15); transform:scale(1.05); }
+  #product .bg-media img{ filter:blur(2px) saturate(1.15); transform:scale(1.05) translateZ(0); }
   #product .bg-overlay{
     background:linear-gradient(165deg, rgba(13,43,24,.78) 0%, rgba(26,77,46,.58) 48%, rgba(13,43,24,.82) 100%);
   }
@@ -316,13 +320,15 @@
     border:1px solid rgba(255,255,255,.22);
     box-shadow:0 8px 32px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.25);
     transition:transform .35s ease, background .35s ease;
+    transform:translateZ(0); -webkit-transform:translateZ(0);
+    will-change:transform;
   }
   .glass-card::before{
     content:""; position:absolute; inset:0 0 55% 0;
     background:linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,0));
     pointer-events:none;
   }
-  .glass-card:hover{ transform:translateY(-6px); background:rgba(255,255,255,.12); }
+  .glass-card:hover{ transform:translateY(-6px) translateZ(0); background:rgba(255,255,255,.12); }
   .product-col h3{
     font-size:22px; color:var(--gold-light); margin-bottom:16px; font-weight:600;
   }
