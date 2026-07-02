@@ -410,23 +410,7 @@
   .contact-head h2{ font-size:clamp(28px,3.8vw,46px); color:var(--green-dark); margin-bottom:20px; }
   .contact-head p{ font-size:17px; color:#3a3a30; font-weight:300; text-align:justify; text-justify:inter-word; hyphens:auto; }
 
-  .contact-grid{ display:grid; grid-template-columns:1fr 1.15fr; gap:44px; }
-
-  .wa-card{
-    background:var(--green); color:var(--white); border-radius:10px; padding:52px 40px;
-    display:flex; flex-direction:column; align-items:flex-start; gap:18px;
-    box-shadow:0 24px 50px -20px rgba(26,77,46,.5);
-  }
-  .wa-card svg{ width:52px; height:52px; }
-  .wa-card h3{ font-family:var(--font-head); font-size:26px; }
-  .wa-card p{ color:rgba(255,255,255,.75); font-size:15px; text-align:justify; text-justify:inter-word; }
-  .wa-card .wa-cta{
-    margin-top:12px; display:inline-flex; align-items:center; gap:10px;
-    background:var(--gold); color:var(--green-dark); padding:14px 28px; border-radius:40px;
-    font-family:var(--font-label); font-size:12px; letter-spacing:2px; text-transform:uppercase;
-    font-weight:600; transition:transform .25s ease, box-shadow .25s ease;
-  }
-  .wa-card .wa-cta:hover{ transform:translateY(-3px); box-shadow:0 12px 24px rgba(200,149,15,.35); }
+  .contact-grid{ display:grid; grid-template-columns:1fr; max-width:600px; margin:0 auto; }
 
   .form-card{
     background:var(--white); border-radius:10px; padding:48px 40px;
@@ -498,32 +482,6 @@
   }
   .footer-copy{ font-size:13px; color:rgba(245,239,227,.55); margin-bottom:6px; }
   .footer-loc{ font-size:13px; color:rgba(245,239,227,.4); }
-
-  /* ---------- WhatsApp float button ---------- */
-  #whatsapp-btn{
-    position:fixed; bottom:26px; right:26px; z-index:400;
-    display:flex; align-items:center; background:#1EBE57; color:var(--white);
-    border-radius:50px; height:60px; padding:0 18px; gap:0;
-    box-shadow:0 8px 24px rgba(30,190,87,.4);
-    transform:translateX(160%); opacity:0;
-    animation:waPulse 2.4s ease-in-out infinite;
-  }
-  #whatsapp-btn.show{ transform:translateX(0); opacity:1; }
-  #whatsapp-btn svg{ width:28px; height:28px; flex-shrink:0; }
-  #whatsapp-btn .wa-text{
-    max-width:0; overflow:hidden; white-space:nowrap; opacity:0;
-    transition:max-width .35s ease, opacity .3s ease, margin .35s ease;
-    font-family:var(--font-label); font-size:13px; letter-spacing:.5px; font-weight:600;
-  }
-  #whatsapp-btn:hover .wa-text{ max-width:160px; opacity:1; margin-left:12px; }
-  @keyframes waPulse{
-    0%,100%{ box-shadow:0 8px 24px rgba(30,190,87,.4), 0 0 0 0 rgba(30,190,87,.5); }
-    50%{ box-shadow:0 8px 24px rgba(30,190,87,.4), 0 0 0 14px rgba(30,190,87,0); }
-  }
-  @media (max-width:768px){
-    #whatsapp-btn{ height:56px; width:56px; padding:0; justify-content:center; }
-    #whatsapp-btn .wa-text{ display:none; }
-  }
 
   /* ---------- Responsive ---------- */
   @media (max-width:768px){
@@ -733,13 +691,6 @@
     </div>
 
     <div class="contact-grid">
-      <div class="wa-card reveal-scale" data-cursor="Chat">
-        <svg viewBox="0 0 32 32" fill="none"><path d="M16 2C8.3 2 2 8.3 2 16c0 2.6.7 5.1 2 7.3L2 30l6.9-1.9c2.1 1.2 4.6 1.9 7.1 1.9 7.7 0 14-6.3 14-14S23.7 2 16 2z" fill="#1EBE57"/><path d="M23.4 19.4c-.4-.2-2.2-1.1-2.5-1.2-.3-.1-.6-.2-.8.2-.2.3-.9 1.2-1.1 1.4-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.6.2-.2.2-.4.4-.6.1-.2.1-.4 0-.6-.1-.2-.8-1.9-1.1-2.6-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.3 1.4 3.6c.2.2 2.4 3.7 5.9 5.1.8.3 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 2.2-.9 2.5-1.8.3-.9.3-1.6.2-1.8-.1-.1-.3-.2-.7-.4z" fill="#fff"/></svg>
-        <h3>Talk to Us on WhatsApp</h3>
-        <p>Most of what we know, we're happy to share.</p>
-        <a class="wa-cta" id="wa-card-link" href="#" target="_blank" rel="noopener">Start a conversation →</a>
-      </div>
-
       <div class="form-card reveal-scale">
         <form id="contact-form">
           <div class="form-group">
@@ -784,24 +735,11 @@
   <div class="footer-loc">Seemanchal, Bihar, India</div>
 </footer>
 
-<!-- ============ WHATSAPP FLOAT ============ -->
-<a id="whatsapp-btn" href="#" target="_blank" rel="noopener" data-cursor="Chat">
-  <svg viewBox="0 0 32 32" fill="none"><path d="M16 2C8.3 2 2 8.3 2 16c0 2.6.7 5.1 2 7.3L2 30l6.9-1.9c2.1 1.2 4.6 1.9 7.1 1.9 7.7 0 14-6.3 14-14S23.7 2 16 2z" fill="#fff"/><path d="M23.4 19.4c-.4-.2-2.2-1.1-2.5-1.2-.3-.1-.6-.2-.8.2-.2.3-.9 1.2-1.1 1.4-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.6.2-.2.2-.4.4-.6.1-.2.1-.4 0-.6-.1-.2-.8-1.9-1.1-2.6-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.3 1.4 3.6c.2.2 2.4 3.7 5.9 5.1.8.3 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 2.2-.9 2.5-1.8.3-.9.3-1.6.2-1.8-.1-.1-.3-.2-.7-.4z" fill="#1EBE57"/></svg>
-  <span class="wa-text">Chat with us</span>
-</a>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
 (function(){
   "use strict";
-
-  /* ---------------- CONFIG ---------------- */
-  var WHATSAPP_NUMBER = "91XXXXXXXXXX"; // placeholder, replace with real number
-  var WA_MESSAGE = "Hi, I heard about Kosi Agro";
-  var waLink = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(WA_MESSAGE);
-  document.getElementById("whatsapp-btn").setAttribute("href", waLink);
-  document.getElementById("wa-card-link").setAttribute("href", waLink);
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -981,11 +919,6 @@
     });
   });
 
-  /* ---------------- WHATSAPP BUTTON ENTRY ---------------- */
-  setTimeout(function(){
-    document.getElementById("whatsapp-btn").classList.add("show");
-  }, 3000);
-
   /* ---------------- CONTACT FORM ---------------- */
   var form = document.getElementById("contact-form");
   var successBox = document.getElementById("form-success");
@@ -1044,7 +977,7 @@
     }
     lerpLoop();
 
-    document.querySelectorAll("a, button, .wa-card").forEach(function(el){
+    document.querySelectorAll("a, button").forEach(function(el){
       el.addEventListener("mouseenter", function(){
         var label = el.getAttribute("data-cursor") || "Learn More";
         circle.querySelector("span").textContent = label;
